@@ -1,0 +1,59 @@
+.tasks{
+    padding-top: 250px;
+    text-align: center;
+}
+
+.tasks ul {
+    list-style: none;
+}
+
+ul > li {
+    padding: 5px 0;
+}
+
+li a {
+    margin: 0 auto;
+    color: white;
+    text-decoration: none;
+    transition: 1s;
+    border: 1px solid black;
+    display: block;
+    width: 100px;
+    height: auto;
+    background-color: black ;
+}
+
+li a:hover{
+    transition: 1s;
+    color: darkred;
+    background-color: white ;
+    border-color: orangered;
+}
+
+input, label, textarea {
+    display: inline-grid;
+}
+
+label {
+    font-size: 17px;
+    font-weight: bold;
+}
+
+
+.button-group{
+    padding-top: 10px;
+}
+
+.button-group > button {
+    padding: 0 5px;
+}
+
+.form{
+    border: 1px solid black;
+    width: 300px;
+}
+
+form{
+    padding: 20px;
+    width: fit-content;
+}

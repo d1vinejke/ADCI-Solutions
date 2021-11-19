@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <title>Step by step form</title>
+</head>
+<body>
+<div class="form">
+    <form>
+        <div class="step">
+            <label for="name">Name: </label>
+            <input name="name" type="text" id="name">
+        </div>
+        <div class="step">
+            <label for="sn">Surname: </label>
+            <input name="surname" type="text" id="sn" required>
+        </div>
+        <div class="step">
+            <label for="email">Email: </label>
+            <input name="email" type="email" id="email" required>
+        </div>
+
+        <div class="btn-control">
+            <button class="back" style="display: none">BACK</button>
+            <button class="next">NEXT</button>
+        </div>
+    </form>
+</div>
+<script src="jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+       let steps = $("form").children(".step");
+       $(steps[0]).show();
+       let current_step = 0;
+       $("button.next").click(function () {
+           let validate = document.querySelectorAll("input");
+           let reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+           if(validate[current_step].value.length > 0) {
+               if(reg.test(validate[2].value) == false && current_step == 2){
+                   alert("Заполните поле Email правильно!");
+               }
+               else {
+                   if(current_step === steps.length-1){
+                       $(this).hide();
+                       alert("Thank you!");
+                   }
+                   $("button.back").show();
+                   current_step++;
+                   changeStep(current_step);
+               }
+           }
+       });
+
+       $("button.back").click(function () {
+           if(current_step == 1) $(this).hide();
+           $("button.next").show();
+           current_step--;
+           changeStep(current_step);
+       });
+
+       function changeStep(num) {
+           $(steps).hide();
+           $(steps[num]).show();
+       }
+    });
+</script>
+</body>
+</html>
